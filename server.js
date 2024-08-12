@@ -1,14 +1,8 @@
-const sequelize = require('./config/connection');
-const { User, Post, Comment } = require('./models');
-
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./routes');
-const sequelize = require('./config/connection');
+const sequelize = require('./config/connection'); // Import Sequelize connection
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -19,7 +13,7 @@ const hbs = exphbs.create({});
 
 // Configure session middleware
 const sess = {
-  secret: 'Super secret secret',
+  secret: 'Super secret secret', // Replace with process.env.SESSION_SECRET for production
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -40,6 +34,7 @@ app.use(express.static('public'));
 
 app.use(routes);
 
+// Sync the Sequelize models to the database, then start the Express server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on PORT ${PORT}`));
 });
