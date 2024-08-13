@@ -1,11 +1,23 @@
 const router = require('express').Router();
+const { Post, User, Comment } = require('../models');
 
-const apiRoutes = require('./api');
-const homeRoutes = require('./homeRoutes');
-const dashboardRoutes = require('./dashboardRoutes');
+// Route to get the homepage
+router.get('/', async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      include: [{ model: User, attributes: ['username'] }],
+    });
 
-router.use('/api', apiRoutes);
-router.use('/', homeRoutes);
-router.use('/dashboard', dashboardRoutes);
+    const posts = postData.map((post) => post.get({ plain: true }));
 
+    res.render('homepage', {
+      posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Other routes...
 module.exports = router;

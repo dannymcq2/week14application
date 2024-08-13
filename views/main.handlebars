@@ -10,6 +10,17 @@
     <header>
         <nav>
             <a href="/">Home</a>
+            <a href="/login">Login</a>
+        </nav>
+    </header>
+    
+    <main>
+        {{#if message}}
+            <h1>{{message}}</h1>
+        {{/if}}
+        <p>Click the button below to go back to the homepage.</p>
+        <button id="logout-btn">Go to Homepage</button>
+    </main>
             {{#if logged_in}}
                 <a href="/dashboard">Dashboard</a>
                 <a href="/logout">Logout</a>
@@ -21,10 +32,15 @@
     
     {{{ body }}}
 
-    <footer>
+
+
         <p>&copy; 2024 Tech Blog</p>
     </footer>
 
+
+    <script src="/logout.js"></script>
+
     <script src="/js/main.js"></script>
+
 </body>
 </html>
