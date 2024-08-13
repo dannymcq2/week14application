@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>All Posts</h1>
+    {{#if posts.length}}
+        <ul>
+            {{#each posts}}
+                <li>
+                    <h2><a href="/post/{{this.id}}">{{this.title}}</a></h2>
+                    <p>By {{this.User.username}} on {{this.createdAt}}</p>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No posts available.</p>
+    {{/if}}
+</body>
+</html>

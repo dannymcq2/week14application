@@ -1,9 +1,0 @@
-<h1>All Posts</h1>
-<ul>
-    {{#each posts}}
-        <li>
-            <h2><a href="/post/{{this.id}}">{{this.title}}</a></h2>
-            <p>By {{this.user.username}} on {{this.createdAt}}</p>
-        </li>
-    {{/each}}
-</ul>
