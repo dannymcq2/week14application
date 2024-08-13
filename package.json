@@ -5,7 +5,8 @@
     "main": "server.js",
     "scripts": {
       "start": "node server.js",
-      "seed": "node seeds/seed.js"
+      "seed": "node seeds/seed.js",
+      "postinstall": "npm rebuild bcrypt --build-from-source"
     },
     "repository": {
       "type": "git",
@@ -31,7 +32,4 @@
       "pg-hstore": "^2.3.4",
       "sequelize": "^6.6.2"
     }
-  }
-"scripts": {
-  "postinstall": "npm rebuild bcrypt --build-from-source"
 }
