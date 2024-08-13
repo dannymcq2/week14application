@@ -1,4 +1,5 @@
 <h1>Create New Post</h1>
+
 <form id="new-post-form" method="POST">
     <label for="post-title">Title</label>
     <input type="text" name="title" id="post-title" required>
@@ -10,3 +11,13 @@
 </form>
 <script src="/routes/newpost.js"></script>
 <script src="/routes/editpost.js"></script>
+
+<form action="/api/posts" method="POST">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" required>
+    
+    <label for="content">Content</label>
+    <textarea name="content" id="content" required></textarea>
+    
+    <button type="submit">Create Post</button>
+</form>
