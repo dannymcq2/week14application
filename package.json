@@ -32,3 +32,6 @@
       "sequelize": "^6.6.2"
     }
   }
+"scripts": {
+  "postinstall": "npm rebuild bcrypt --build-from-source"
+}
